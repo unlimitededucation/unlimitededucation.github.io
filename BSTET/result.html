@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Result </title>
+    <link rel="stylesheet" type="text/css" href="./css/styleResult.css">
+    <script src = "./js/validator.js"></script>
+</head>
+<body>
+    <div id="center">
+        <h1> Result</h1>
+        <p id ="result"></p>
+    </div>
+    <script>
+         async function fun(){
+            var user =  await getCookie("stetuser");
+            var objString =  await getCookie(user);
+            var markobj = JSON.parse(objString);
+            document.getElementById("result").innerHTML=`correct Attempted : ${markobj.numCorrect} <br/>
+                                                        wrong Attempted : ${markobj.numIncorrect} <br/>
+                                                        Final marks : <b> ${markobj.marks}<b> <br/>`
+            // console.log("markobj="+obj.numCorrect);
+            document.cookie = "stetuser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+     
+        }
+        fun();
+    // alert(` correct Answers : ${countCorrect}\n incorrect Answers : ${countIncorrect}\n Total Marks :${marks}`);
+    // console.log(countCorrect + " " + countIncorrect);
+       </script>
+</body>
+</html>
